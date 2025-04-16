@@ -6,8 +6,8 @@ let package = Package(
     name: "Down",
     platforms: [
         .macOS("10.11"),
-        .iOS("9.0"),
-        .tvOS("9.0")
+        .iOS("12.0"),
+        .tvOS("12.0")
     ],
     products: [
         .library(
@@ -15,22 +15,16 @@ let package = Package(
             targets: ["Down"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-cmark", from: "0.4.0"),
+    ],
     targets: [
         .target(
-            name: "libcmark",
-            dependencies: [],
-            path: "Sources/cmark",
-            exclude: [
-              "include",
-              "case_fold_switch.inc",
-              "entities.inc",
-              "COPYING"
-            ],
-            publicHeadersPath: "./"
-        ),
-        .target(
             name: "Down",
-            dependencies: ["libcmark"],
+            dependencies: [
+                .product(name: "cmark-gfm", package: "swift-cmark"),
+                .product(name: "cmark-gfm-extensions", package: "swift-cmark"),
+            ],
             path: "Sources/Down",
             exclude: ["Down.h"],
           resources: [
