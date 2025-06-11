@@ -22,7 +22,7 @@ let package = Package(
         .target(
             name: "Down",
             dependencies: [
-                .product(name: "swift-cmark", package: "swift-cmark"),
+                .product(name: "cmark-gfm", package: "swift-cmark"),
             ],
             path: "Sources/Down",
             exclude: ["Down.h"],
