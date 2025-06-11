@@ -15,22 +15,15 @@ let package = Package(
             targets: ["Down"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/swiftlang/swift-cmark", from: "0.4.0"),
+    ],
     targets: [
         .target(
-            name: "libcmark",
-            dependencies: [],
-            path: "Sources/cmark",
-            exclude: [
-              "include",
-              "case_fold_switch.inc",
-              "entities.inc",
-              "COPYING"
-            ],
-            publicHeadersPath: "./"
-        ),
-        .target(
             name: "Down",
-            dependencies: ["libcmark"],
+            dependencies: [
+                .product(name: "swift-cmark", package: "swift-cmark"),
+            ],
             path: "Sources/Down",
             exclude: ["Down.h"],
           resources: [
