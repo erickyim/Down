@@ -7,7 +7,7 @@ let package = Package(
     platforms: [
         .macOS("10.11"),
         .iOS("9.0"),
-        .tvOS("9.0")
+        .tvOS("9.0"),
     ],
     products: [
         .library(
@@ -16,20 +16,20 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/swiftlang/swift-cmark", from: "0.4.0"),
+        .package(url: "https://github.com/swiftlang/swift-cmark", from: "0.4.0")
     ],
     targets: [
         .target(
             name: "Down",
             dependencies: [
-                .product(name: "cmark-gfm", package: "swift-cmark"),
+                .product(name: "cmark-gfm", package: "swift-cmark")
             ],
             path: "Sources/Down",
             exclude: ["Down.h"],
-          resources: [
-            .copy("Resources/DownView.bundle"),
-            .copy("Resources/DownView (macOS).bundle"),
-          ]
+            resources: [
+                .copy("Resources/DownView.bundle"),
+                .copy("Resources/DownView (macOS).bundle"),
+            ]
         ),
         .testTarget(
             name: "DownTests",
@@ -49,9 +49,9 @@ let package = Package(
                 "Styler/InlineStyleTests.swift",
                 "Styler/ListItemStyleTests.swift",
                 "Styler/StylerTestSuite.swift",
-                "Styler/ThematicBreakSyleTests.swift"
+                "Styler/ThematicBreakSyleTests.swift",
             ]
-        )
+        ),
     ],
     swiftLanguageVersions: [.v5]
 )
